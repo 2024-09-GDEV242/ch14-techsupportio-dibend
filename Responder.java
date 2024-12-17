@@ -36,8 +36,20 @@ public class Responder
         defaultResponses = new ArrayList<>();
         fillResponseMap();
         fillDefaultResponses();
-        randomGenerator = new Random();
-    }
+        StringBuilder currentEntry = new StringBuilder();
+        for (String line : defaultResponses) {
+            if (line.trim().isEmpty()) {
+                if (currentEntry.length() > 0) {
+                    responses.add(currentEntry.toString().trim());
+                    currentEntry.setLength(0);
+                }
+            } else {
+                currentEntry.append(line).append(" ");
+            }
+        }
+        if (currentEntry.length() > 0) {
+            responses.add(currentEntry.toString().trim());
+        }
 
     /**
      * Generate a response from a given set of input words.
@@ -120,15 +132,20 @@ public class Responder
      * if we don't know what else to say.
      */
     private void fillDefaultResponses()
-    {
-        Charset charset = Charset.forName("US-ASCII");
-        Path path = Paths.get(FILE_OF_DEFAULT_RESPONSES);
-        try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
-            String response = reader.readLine();
-            while(response != null) {
-                defaultResponses.add(response);
-                response = reader.readLine();
+        StringBuilder currentEntry = new StringBuilder();
+        for (String line : defaultResponses) {
+            if (line.trim().isEmpty()) {
+                if (currentEntry.length() > 0) {
+                    responses.add(currentEntry.toString().trim());
+                    currentEntry.setLength(0);
+                }
+            } else {
+                currentEntry.append(line).append(" ");
             }
+        }
+        if (currentEntry.length() > 0) {
+            responses.add(currentEntry.toString().trim());
+        }
         }
         catch(FileNotFoundException e) {
             System.err.println("Unable to open " + FILE_OF_DEFAULT_RESPONSES);
