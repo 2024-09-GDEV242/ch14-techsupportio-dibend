@@ -17,6 +17,17 @@ import java.util.*;
  * @author David J. Barnes and Michael Kölling.
  * @version 2016.02.29
  */
+/**
+ * The Responder class handles responses for a support system.
+ * 
+ * This class allows the loading of default responses and dynamic responses
+ * from a file. It also supports multi-line responses separated by blank lines.
+ * 
+ * Responsibilities:
+ * 1. Populate responses using a default list.
+ * 2. Populate responses dynamically using an input file.
+ * 3. Provide methods to access and print responses.
+ */
 public class Responder
 {
     // Used to map key words to responses.

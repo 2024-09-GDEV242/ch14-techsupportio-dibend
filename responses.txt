@@ -1,0 +1,12 @@
+crash, crashes
+Well, it never crashes on our system. It must have something
+to do with your system. Tell me more about your configuration.
+
+error
+An error occurred, please restart the application.
+
+warning
+This is just a warning, nothing critical.
+
+success
+Your operation completed successfully.
